@@ -1,0 +1,8 @@
+
+Flask==3.1.0
+Flask-Cors==5.0.0
+langchain==0.3.12
+langchain-openai==0.3.16
+python-dotenv==1.0.0
+langgraph==0.4.3
+requests==2.32.3
