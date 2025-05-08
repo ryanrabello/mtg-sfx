@@ -2,7 +2,7 @@ import os
 from flask import Flask, json, request, jsonify, send_file
 from flask_cors import CORS
 import requests
-from agent import agent, search_freesound
+from agent import agent, search_freesound, soundsCache
 
 app = Flask(__name__)
 CORS(app)
@@ -62,9 +62,9 @@ def download_sound(sound_id):
         # Stream the file back to the client
         return send_file(
             response.raw,
-            mimetype=response.headers.get("content-type", "audio/mpeg"),
+            # mimetype=response.headers.get("content-type", "audio/mpeg"),
             as_attachment=True,
-            download_name=f"sound_{sound_id}.mp3",
+            download_name=f"{soundsCache[sound_id]['name']}.{soundsCache[sound_id]['type']}",
         )
 
     except Exception as e:

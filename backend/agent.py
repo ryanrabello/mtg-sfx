@@ -26,7 +26,7 @@ def search_freesound(query: str) -> str:
     headers = {"Authorization": f"Token {FREESOUND_API_KEY}"}
     params = {
         "query": query,
-        "fields": "id,name,description,duration",
+        "fields": "id,name,description,duration,type",
         "page_size": 4,
         "filter": "duration:[1 TO 20]",
     }
@@ -68,7 +68,7 @@ def play_sound(sound_id: str) -> str:
     if soundsCache.get(sound_id_int):
         sound = soundsCache[sound_id_int]
         print(f"Playing sound: {sound['name']}")
-        return {"id": sound_id, "sound_name": sound["name"]}
+        return {"id": sound_id, "sound_name": sound["name"], "type": sound["type"]}
     return "Sound not found. Try another query."
 
 
