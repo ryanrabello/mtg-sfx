@@ -71,7 +71,7 @@ def play_sound(sound_id: str) -> str:
         return {"id": sound_id, "sound_name": sound["name"], "type": sound["type"]}
     return "Sound not found. Try another query."
 
-
+@tool(return_direct=True)
 def continue_listening() -> str:
     """Continue listening to the transcript."""
     return "Continuing..."
@@ -86,6 +86,8 @@ Your job is to
 2. If applicable, like when a player casts a spell or looses life. Search freesound for relevant sound effects
 3. Only if there is a good match, pick one of the sound effects and play it.
 4. Continue listening to the transcript.
+
+Freesounds has general sound effects, feel free to get creative. A card like "Dragonback lancer" for example could have a query of "dragon roaring" or "sword swing".
 """,
     checkpointer=checkpointer,
 )
